@@ -13,29 +13,29 @@ interface NewTansactionModalProps {
     onRequestClose: () => void; 
 }
 export function NewTransactionModal({ isOpen, onRequestClose}: NewTansactionModalProps) {
-const  { createTransaction } = useTransactions();
+  const  { createTransaction } = useTransactions();
 
-    const [title, setTitle] = useState('');
-    const [amount, setAmount] = useState(0);
-    const [category, setCategory] = useState('');
-    const [type, setType] = useState('deposit');
+  const [title, setTitle] = useState('');
+  const [amount, setAmount] = useState(0);
+  const [category, setCategory] = useState('');
+  const [type, setType] = useState('deposit');
 
   async  function handleCreateNewTransaction(event: FormEvent) {
-        event.preventDefault();
+    event.preventDefault();
 
-      await  createTransaction({
-            title,
-            amount,
-            category,
-            type
-        })
+    await  createTransaction({
+      title,
+      amount,
+      category,
+      type
+    });
 
-        setTitle('');
-        setAmount(0);
-        setCategory('');
-        onRequestClose();
+    setTitle('');
+    setAmount(0);
+    setCategory('');
+    onRequestClose();
         
-    } 
+  } 
 
     return (
         <Modal isOpen={isOpen} 
